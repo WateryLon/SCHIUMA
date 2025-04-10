@@ -166,7 +166,7 @@ const SalidaMercancia = () => {
 
       if (response.ok) {
         alert("Salida de mercancía confirmada.");
-        navigator("/movements")
+        navigate("/movements")
       } else {
         const errorData = await response.json();
         alert(errorData.message || "Error al registrar la salida.");

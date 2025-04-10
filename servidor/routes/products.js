@@ -78,30 +78,6 @@ router.get('/api/products/:filter?', verifyToken, getProducts);
  */
 router.post('/api/products', verifyToken, uploadProductPhotos.single('image'), postProducts);
 
-/**
- * @swagger
- * /api/products/{product}:
- *   get:
- *     summary: Obtener un producto por ID
- *     tags: [Productos]
- *     security:
- *       - bearerAuth: []
- *     parameters:
- *       - in: path
- *         name: product
- *         required: true
- *         schema:
- *           type: integer
- *         description: ID del producto
- *     responses:
- *       200:
- *         description: Información del producto
- *       404:
- *         description: Producto no encontrado
- *       401:
- *         description: No autorizado
- */
-router.get('/api/products/:pk_product', verifyToken, getProductsById);
 
 /**
  * @swagger
@@ -153,7 +129,8 @@ router.get('/api/products/:pk_product', verifyToken, getProductsById);
  *       500:
  *         description: Error en la transacción
  */
-router.put('/api/products/:product', verifyToken, uploadProductPhotos.single('image'),  putProducts);
+router.get('/api/products/id/:pk_product', verifyToken, getProductsById);
+
 
 router.put('/api/products/add-stock/:pk_product', verifyToken,  putProductsAddStock);
 

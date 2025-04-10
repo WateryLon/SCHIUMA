@@ -72,6 +72,7 @@ const postProducts = (req, res) => {
 
 const getProductsById = (req, res) => {
     const pk_product = req.params.pk_product;
+    console.log(pk_product);
     connection.query('SELECT * FROM view_products WHERE status = 1 AND pk_product = ?', 
         [pk_product],
         (error, results) => {

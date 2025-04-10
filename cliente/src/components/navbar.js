@@ -15,13 +15,6 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg" style={{ backgroundColor: '#1E8A71' }} data-bs-theme="light">
       <div className="container-fluid">
         <a className={`navbar-brand`} href="/" style={{ color: 'white' }}>
-          <img
-            src="../images/logo_icono_bla.png"
-            alt="Logo"
-            width="40"
-            height="35"
-            className="d-inline-block align-text-top"
-          />
           SCHIUMA
         </a>
         <button
@@ -37,20 +30,7 @@ const Navbar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav mx-auto">
-            {/* Empleados */}
-            <li className="nav-item" style={{ margin: '0 15px' }}>
-              <a
-                className={`nav-link ${isActive(["/employees", "/add-employee"]) ? "active" : ""}`}
-                href="/employees"
-                style={
-                  isActive(["/employees", "/add-employee"])
-                    ? { backgroundColor: 'white', color: '#1E8A71', borderRadius: '20px' } // Aquí agregamos border-radius
-                    : { color: 'white', borderRadius: '20px' } // Aquí también aseguramos el border-radius
-                }
-              >
-                Empleados
-              </a>
-            </li>
+            
 
             {/* Productos */}
             <li className="nav-item" style={{ margin: '0 15px' }}>
@@ -101,10 +81,17 @@ const Navbar = () => {
             </li>
           </ul>
           <div className="ms-auto">
-            <button className="btn btn-outline-light" onClick={() => alert("Cerrar sesión")}>
-              Cerrar Sesión
-            </button>
-          </div>
+                <button
+                  className="btn btn-outline-light"
+                  onClick={() => {
+                    localStorage.removeItem("token"); // Elimina token
+                    window.location.href = "/"; // Redirecciona
+                  }}
+                >
+                  Cerrar Sesión
+                </button>
+              </div>
+
         </div>
       </div>
     </nav>

@@ -32,8 +32,8 @@ const ProductForm = () => {
         const fetchData = async () =>{
             const token = localStorage.getItem("token");
             if (!token) {
-                setError("No estás autenticado.");
-                return;
+                alert("No estás autenticado.");
+                navigate("/")
             }
 
             //PROVIDER FETCH
@@ -88,7 +88,7 @@ const ProductForm = () => {
             console.log(pk_product)
             if(pk_product){
                 try {
-                    const productProduct = await fetch(`http://localhost:3000/api/products/${pk_product}`, {
+                    const productProduct = await fetch(`http://localhost:3000/api/products/id/${pk_product}`, {
                         method: 'GET',
                         headers: {
                             'Authorization': `Bearer ${token}`,
